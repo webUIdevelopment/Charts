@@ -21,7 +21,7 @@ pipelines:
         deployment: test
         script:
           - export BASE_HREF=/hello-world/test/
-          - envsubst < dist/vacedar/index.html > dist/vacedar/index.html
+          - npx envsub dist/vacedar/index.html
           - pipe: atlassian/aws-s3-deploy:0.4.4
             variables:
               S3_BUCKET: 'va-cedar-cdn/hello-world/test'
