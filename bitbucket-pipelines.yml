@@ -11,7 +11,7 @@ pipelines:
         caches:
           - node
         script: # Modify the commands below to build your repository.
-          - npm ci
+          - npm install
           - npm run ng build --prod
 #          - npm test
         artifacts:
