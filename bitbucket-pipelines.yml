@@ -12,14 +12,16 @@ pipelines:
           - node
         script: # Modify the commands below to build your repository.
           - npm install
-          - npm run ng build --prod
+          - npx ng build --prod --baseHref='${BASE_HREF}'
 #          - npm test
         artifacts:
           - dist/**
-    - step: 
+    - step:
         name: Deploy to test
         deployment: test
         script:
+          - export BASE_HREF=/hello-world/test/
+          - envsubst < dist/vacedar/index.html > dist/vacedar/index.html
           - pipe: atlassian/aws-s3-deploy:0.4.4
             variables:
               S3_BUCKET: 'va-cedar-cdn/hello-world/test'
@@ -27,4 +29,4 @@ pipelines:
           - pipe: atlassian/aws-cloudfront-invalidate:0.3.3
             variables:
               DISTRIBUTION_ID: "E1A9GXGX85QFA4"
-              PATHS: "/hello-world/test/*"
+              PATHS: "/hello-world/test/index.html /hello-world/test/favicon.ico"
