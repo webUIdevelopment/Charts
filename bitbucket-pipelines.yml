@@ -1,0 +1,33 @@
+# This is a sample build configuration for JavaScript.
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:12.18.1
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - node
+        script: # Modify the commands below to build your repository.
+          - npm install
+          - npx ng build --prod --baseHref='${BASE_HREF}'
+#          - npm test
+        artifacts:
+          - dist/**
+    - step:
+        name: Deploy to test
+        deployment: test
+        script:
+          - export BASE_HREF=/hello-world/test/
+          - npx envsub dist/vacedar/index.html
+          - pipe: atlassian/aws-s3-deploy:0.4.4
+            variables:
+              S3_BUCKET: 'va-cedar-cdn/hello-world/test'
+              LOCAL_PATH: 'dist/vacedar'
+              ACL: 'public-read'
+          - pipe: atlassian/aws-cloudfront-invalidate:0.3.3
+            variables:
+              DISTRIBUTION_ID: "E1A9GXGX85QFA4"
+              PATHS: "/hello-world/test/ /hello-world/test/index.html /hello-world/test/favicon.ico"
