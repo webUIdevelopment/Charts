@@ -14,7 +14,11 @@ pipelines:
           - npm ci
           - npm run ng build --prod
 #          - npm test
+    - step: 
+        name: Deploy to test
+        deployment: test
+        script:
           - pipe: atlassian/aws-s3-deploy:0.4.4
             variables:
-              S3_BUCKET: 'va-cedar-cdn/hello-world'
+              S3_BUCKET: 'va-cedar-cdn/hello-world/test'
               LOCAL_PATH: 'dist/vacedar'
