@@ -24,3 +24,7 @@ pipelines:
             variables:
               S3_BUCKET: 'va-cedar-cdn/hello-world/test'
               LOCAL_PATH: 'dist/vacedar'
+          - pipe: atlassian/aws-cloudfront-invalidate:0.3.3
+            variables:
+              DISTRIBUTION_ID: "E1A9GXGX85QFA4"
+              PATHS: "/hello-world/test/*"
