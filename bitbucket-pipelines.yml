@@ -29,4 +29,4 @@ pipelines:
           - pipe: atlassian/aws-cloudfront-invalidate:0.3.3
             variables:
               DISTRIBUTION_ID: "E1A9GXGX85QFA4"
-              PATHS: "/hello-world/test/index.html /hello-world/test/favicon.ico"
+              PATHS: "/hello-world/test/ /hello-world/test/index.html /hello-world/test/favicon.ico"
