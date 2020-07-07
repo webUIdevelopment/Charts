@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import { HttpClientModule } from "@angular/common/http";
 
 
 
@@ -31,7 +32,8 @@ import { CardComponent } from './card/card.component';
     MatToolbarModule,
     MatSidenavModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
 
   ],
   providers: [],
