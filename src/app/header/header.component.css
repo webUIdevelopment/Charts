@@ -1,0 +1,17 @@
+img{
+  width: 100%;
+    max-width: 264px;
+    height: auto;
+}
+.navbar {
+  padding-top: 12px;
+  border-radius: 0;
+}
+.navbar-header {
+  padding: 0 100px;
+}
+.navbar-inverse {
+  background-color: #112e51;
+  border-color: #112e51;
+}
+

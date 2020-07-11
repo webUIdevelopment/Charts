@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+
+/* .navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+} */
+
+/* Add a gray background color and some padding to the footer */
+footer {
+  background-color: #112e51;
+  padding: 25px;
+}
+
+.va-header-log {
+  height: 60px !important;
+}
+.va-footer-logo>img {
+  width: 200px;
+  height: auto;
+}
+.va-footer-links-bottom {
+  padding-left: .5em;
+  padding-right: .5em;
+}
+.va-footer-links-bottom ul li a, .va-footer-links-bottom ul li a:visited {
+  color: #fff;
+}
